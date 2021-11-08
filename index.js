@@ -19,7 +19,7 @@ function createMainWindow() {
   //MainWindow.webContents.openDevTools();
 }
 /* When app ready, show window */
-app.on('whenReady', () => {
+app.whenReady().then(() => {
   /* Create main window */
   createMainWindow();
   /* Custom URI handler for linux and windows */
