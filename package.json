@@ -1,7 +1,7 @@
 {
   "name": "portal-test-app",
   "atuhor": "snaildos",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder"
@@ -39,5 +39,8 @@
         ]
       }
     ]
+  },
+  "dependencies": {
+    "electron-store": "^8.0.1"
   }
 }
