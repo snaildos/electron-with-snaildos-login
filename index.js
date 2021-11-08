@@ -19,7 +19,7 @@ function createMainWindow() {
     minHeight: 400,
     center: true,
   }));
-  MainWindow.loadURL("http://192.168.200.92:8080/login?redir=portaltest://login");
+  MainWindow.loadURL("http://192.168.2.7:8080?redir=portaltest://login");
   //MainWindow.webContents.openDevTools();
 }
 /* When app ready, show window */
@@ -33,13 +33,11 @@ app.whenReady().then(() => {
     let arr2 = str2.split(' ',2);
     mode = arr2[0]
     data[0] = arr2[1]
-    if (mode == "login") {
-      console.log("Logging in: "+data[0]);
-      data[0].replace("//?token=", " ").split(' ',2);
-      console.log("Token data: "+data[0])
-      store.set('token', data[0]);
-      MainWindow.loadURL(`${config.URL}playlist/${data[0]}`);
-    };
+    console.log("Logging in: "+data[0]);
+    data[0].replace("//?token=", " ").split(' ',2);
+    console.log("Token data: "+data[0])
+    store.set('token', data[0]);
+    MainWindow.loadFile('index.html');
   })
   /* Custom URI handler for mac */
   app.on("open-url", (event, url) => {
@@ -49,13 +47,11 @@ app.whenReady().then(() => {
     let arr2 = str2.split(' ',2);
     mode = arr2[0]
     data[0] = arr2[1]
-    if (mode == "login") {
-      console.log("Logging in: "+data[0]);
-      data[0].replace("//?token=", " ").split(' ',2);
-      console.log("Token data: "+data[0])
-      store.set('token', data[0]);
-      MainWindow.loadURL(`${config.URL}playlist/${data[0]}`);
-    };
+    console.log("Logging in: "+data[0]);
+    data[0].replace("//?token=", " ").split(' ',2);
+    console.log("Token data: "+data[0])
+    store.set('token', data[0]);
+    MainWindow.loadFile('index.html');
   });
 });
 /* If all windows are closed, quit app, exept if on darwin */
