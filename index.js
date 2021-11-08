@@ -1,4 +1,5 @@
 /* Import node modules */
+const config = require("./config.json");
 const { app, BrowserWindow, protocol } = require("electron");
 /* Disable gpu and transparent visuals if not win32 or darwin */
 if (process.platform !== "win32" && process.platform !== "darwin") {
@@ -14,7 +15,7 @@ function createMainWindow() {
     minHeight: 400,
     center: true,
   }));
-  MainWindow.loadURL("https://google.com");
+  MainWindow.loadURL("http://192.168.200.92:8080/login?redir=portaltest://");
   //MainWindow.webContents.openDevTools();
 }
 /* When app ready, show window */
@@ -22,8 +23,8 @@ app.on('whenReady', () => {
   /* Create main window */
   createMainWindow();
   /* Custom URI handler for linux and windows */
-  app.setAsDefaultProtocolClient("portal");
-  protocol.registerHttpProtocol('portal', (req, cb) => {
+  app.setAsDefaultProtocolClient("portaltest");
+  protocol.registerHttpProtocol('portaltest', (req, cb) => {
     const url = req.url.substr(9)
     var data = new Array ();
     let str2 = url.replace(":", " ");

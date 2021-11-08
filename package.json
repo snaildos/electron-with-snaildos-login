@@ -1,8 +1,43 @@
 {
+  "name": "portal-test-app",
+  "atuhor": "snaildos",
+  "version": "0.0.1",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
-  "dependencies": {
-    "electron": "^15.3.0"
+  "devDependencies": {
+    "electron": "^15.3.0",
+    "electron-builder": "^22.13.1"
+  },
+  "build": {
+    "appId": "com.snaildos.portaltest",
+    "productName": "Portal Test",
+    "mac": {
+      "category": "Network"
+    },
+    "linux": {
+      "target": [
+        "appimage",
+        "deb"
+      ],
+      "category": "Network"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "protocols": [
+      {
+        "name": "portaltest",
+        "schemes": [
+          "portaltest"
+        ]
+      }
+    ]
   }
 }
