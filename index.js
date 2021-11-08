@@ -33,11 +33,11 @@ app.whenReady().then(() => {
     let arr2 = str2.split(' ',2);
     mode = arr2[0]
     data[0] = arr2[1]
-    console.log("Logging in: "+data[0]);
-    data[0].replace("//?token=", " ").split(' ',2);
-    console.log("Token data: "+data[0])
-    store.set('token', data[0]);
-    MainWindow.loadFile('index.html');
+      console.log("Logging in: "+data[0]);
+      data[0].replace("/?token=", " ").split(' ',2);
+      console.log("Token data: "+data[0])
+      store.set('token', data[0]);
+      MainWindow.loadFile('index.html');
   })
   /* Custom URI handler for mac */
   app.on("open-url", (event, url) => {
@@ -47,11 +47,11 @@ app.whenReady().then(() => {
     let arr2 = str2.split(' ',2);
     mode = arr2[0]
     data[0] = arr2[1]
-    console.log("Logging in: "+data[0]);
-    data[0].replace("//?token=", " ").split(' ',2);
-    console.log("Token data: "+data[0])
-    store.set('token', data[0]);
-    MainWindow.loadFile('index.html');
+      console.log("Logging in: "+data[0]);
+      data[0].replace("/?token=", " ").split(' ',2);
+      console.log("Token data: "+data[0])
+      store.set('token', data[0]);
+      MainWindow.loadFile('index.html');
   });
 });
 /* If all windows are closed, quit app, exept if on darwin */
