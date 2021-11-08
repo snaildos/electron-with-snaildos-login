@@ -1,5 +1,9 @@
 /* Import node modules */
 const config = require("./config.json");
+const Store = require('electron-store');
+
+const store = new Store();
+
 const { app, BrowserWindow, protocol } = require("electron");
 /* Disable gpu and transparent visuals if not win32 or darwin */
 if (process.platform !== "win32" && process.platform !== "darwin") {
@@ -20,8 +24,6 @@ function createMainWindow() {
 }
 /* When app ready, show window */
 app.whenReady().then(() => {
-  /* Create main window */
-  createMainWindow();
   /* Custom URI handler for linux and windows */
   app.setAsDefaultProtocolClient("portaltest");
   protocol.registerHttpProtocol('portaltest', (req, cb) => {
@@ -31,10 +33,9 @@ app.whenReady().then(() => {
     let arr2 = str2.split(' ',2);
     mode = arr2[0]
     data[0] = arr2[1]
-    if (mode == "login") {
       console.log("Logging in: "+data[0]);
+      store.set('token', data[0]);
       MainWindow.loadURL(`${config.URL}playlist/${data[0]}`);
-    }
   })
   /* Custom URI handler for mac */
   app.on("open-url", (event, url) => {
@@ -44,10 +45,9 @@ app.whenReady().then(() => {
     let arr2 = str2.split(' ',2);
     mode = arr2[0]
     data[0] = arr2[1]
-    if (mode == "login") {
       console.log("Logging in: "+data[0]);
+      store.set('token', data[0]);
       MainWindow.loadURL(`${config.URL}playlist/${data[0]}`);
-    }
   });
 });
 /* If all windows are closed, quit app, exept if on darwin */
