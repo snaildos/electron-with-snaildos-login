@@ -1,0 +1,24 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.snaildos.portaltest
+productName: Portal Test
+mac:
+  category: Network
+linux:
+  target:
+    - appimage
+    - deb
+  category: Network
+win:
+  target: nsis
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+protocols:
+  - name: portaltest
+    schemes:
+      - portaltest
+files: []
+electronVersion: 15.3.1
