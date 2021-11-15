@@ -1,8 +1,8 @@
-version: 0.0.4
+version: 0.0.5
 files:
-  - url: Portal-Test-Setup-0.0.4.exe
-    sha512: pci68Id32mnggsBR64gGxnpB9ApO4eYtv9SR6blr4mSnGDgXeYFjyNNWjqe8CqhflIMnHh/t4m106y/UMYWNbg==
-    size: 61970591
-path: Portal-Test-Setup-0.0.4.exe
-sha512: pci68Id32mnggsBR64gGxnpB9ApO4eYtv9SR6blr4mSnGDgXeYFjyNNWjqe8CqhflIMnHh/t4m106y/UMYWNbg==
-releaseDate: '2021-11-12T15:35:46.239Z'
+  - url: Portal-Test-Setup-0.0.5.exe
+    sha512: VxiUA8lXCDgWJvA8AjZ2PPSVGz3h2rT/l7CJhqFqRlbkCMe7YkIQW1iesi5AFHY/qz5qYL02v8OyM5sJhVA4Xg==
+    size: 62015737
+path: Portal-Test-Setup-0.0.5.exe
+sha512: VxiUA8lXCDgWJvA8AjZ2PPSVGz3h2rT/l7CJhqFqRlbkCMe7YkIQW1iesi5AFHY/qz5qYL02v8OyM5sJhVA4Xg==
+releaseDate: '2021-11-15T02:41:11.645Z'

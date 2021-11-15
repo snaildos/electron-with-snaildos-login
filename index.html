@@ -2,7 +2,6 @@
     <head>
         <stylesheet type="text/css" href="https://cdn.snaildos.com/w3.css">
         <script src="https://cdn.snaildos.com/jquery.min.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
         <title>Example Demo</title>
     </head>
@@ -10,6 +9,7 @@
 <h1 class="w3-center">Hello, <p id="name">Loading...</p></h1>
     </body>
     <script>
+    const axios = require('axios');
     const Store = require('electron-store');
     const store = new Store();
     token = store.get('token')

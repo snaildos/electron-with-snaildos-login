@@ -2,6 +2,8 @@ const { app, BrowserWindow, protocol } = require("electron");
 const Store = require('electron-store');
 const config = require("./config.json");
 const store = new Store();
+const axios = require('axios');
+token = store.get('token')
 
 if (process.platform !== "win32" && process.platform !== "darwin") {
   app.commandLine.appendSwitch("enable-transparent-visuals");
@@ -23,6 +25,36 @@ function createMainWindow() {
   MainWindow.loadURL("https://login.snaildos.com?redir=portaltest://login");
 }
 app.whenReady().then(() => {
+  if (token != null) {
+    console.log("Verifying Identity..")
+    async function verify() {
+      await axios.get('https://api.snaildos.com/users/@me', {
+      headers: {
+      Authorization: token
+      }}
+      )
+        .then(function (response) {
+          // handle success
+          if (( response.data.status ) === "false") {
+            config.set('token', null)
+            MainWindow.loadURL("https://login.snaildos.com?redir=portaltest://login");
+            console.log("Token failure!")
+          } else {
+            console.log("Sucess!")
+            MainWindow.loadFile('index.html')
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+          MainWindow.loadURL("https://login.snaildos.com?redir=portaltest://login");
+          console.log("Token failure!")
+        })
+        .then(function () {
+        });
+      }
+      verify()
+  }
   app.setAsDefaultProtocolClient("portaltest");
   protocol.registerHttpProtocol('portaltest', (req, cb) => {
     const url = req.url.substr(25)
